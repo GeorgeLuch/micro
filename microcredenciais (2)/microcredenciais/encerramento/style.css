@@ -460,4 +460,37 @@ body {
     color: white;
     padding: 20px 0;
     text-align: center;
+
+}
+/* =========================
+   Caixa de texto menor (abaixo do parágrafo "Também é o momento...")
+   ========================= */
+.message-box .stage-mini{
+    display: block;
+    width: 100%;
+    max-width: 720px;         /* pode ajustar */
+    min-height: 150px;        /* menor que a caixa grande */
+    margin-top: 18px;
+
+    background: #e6e6e6;
+    border: none;
+    border-radius: 10px;
+    padding: 18px 20px;
+
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #222;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    resize: none;             /* deixe 'vertical' se quiser redimensionar */
+}
+
+.message-box .stage-mini::placeholder{
+    font-weight: 800;
+    color: #444;
+}
+
+.message-box .stage-mini:focus{
+    outline: 3px solid rgba(0,168,89,0.25);
+    outline-offset: 2px;
 }
