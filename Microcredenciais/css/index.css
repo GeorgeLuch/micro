@@ -201,7 +201,6 @@ body {
             --text-dark: #212529;
             --border-gray: #dee2e6;
             --white: rgba(255, 255, 255, 0.95); /* Leve transparência para o fundo aparecer */
-            
             --blue: #2d7df6;
             --purple: #b549f3;
             --pink: #ff3c96;
@@ -211,7 +210,7 @@ body {
             --periwinkle: #7689f3;
             --cyan: #00bcd4;
         }
-
+        
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -221,7 +220,7 @@ body {
             min-height: 100vh;
 
             /* CONFIGURAÇÃO DA IMAGEM DE FUNDO */
-            background-image: url('./imagem/fundo.png'); /* Substitua pelo nome do seu arquivo */
+            background-image: url('../imagem/fundo.png'); /* Substitua pelo nome do seu arquivo */
             background-size: cover; /* Cobre toda a tela */
             background-position: center; /* Centraliza a imagem */
             background-attachment: fixed; /* A imagem não rola com a página */
@@ -291,3 +290,5 @@ body {
         .cyan { color: var(--cyan); border-color: var(--cyan); } .cyan .icon-inner { background-color: var(--cyan); }
 
         .bottom-nav { background-color: #333; color: white; padding: 20px 0; text-align: center; }
+
+        
