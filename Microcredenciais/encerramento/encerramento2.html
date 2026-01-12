@@ -21,7 +21,7 @@
   <!-- Seu JS -->
   <script src="./javascript.js" defer></script>
 
-  <link rel="stylesheet" href="../css/encerramento.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body class="bg-light">
@@ -29,7 +29,7 @@
   <nav class="top-nav bg-white border-bottom shadow-sm">
     <div class="nav-container d-flex align-items-center py-2">
       <div class="nav-logo">
-        <img src="../imagens/logo_microcredenciais.png" alt="Descrição da imagem" height="80">
+        <img src="../imagem/logo_microcredenciais.png" alt="Descrição da imagem" height="80">
       </div>
     </div>
   </nav>
@@ -66,16 +66,20 @@
     </section>
   </main>
 
-  <footer class="bottom-nav bg-white border-top mt-5">
-    <div class="footer-container text-center py-3">
-      <p class="copyright mb-0 text-muted">
-        &copy; 2026 UVPR - Universidade Virtual do Paraná
-      </p>
-    </div>
-  </footer>
+ <footer class="bottom-nav">
+        <div class="footer-container">
+            <!--<ul class="footer-links">
+                            <li><a href="#">Sobre o Programa</a></li>
+                            <li><a href="#">Termos de Uso</a></li>
+                            <li><a href="#">Privacidade</a></li>
+                            <li><a href="#">Ajuda</a></li>
+                        </ul>-->
+            <p class="copyright">© 2026 UVPR - Universidade Virtual do Paraná</p>
+        </div>
+    </footer>
 
 <script>
-  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyeRwyloUqqg4Z14sp1fJweevnWIDvEHD5ZDE8ei4X-crWBC94CZMRP-xD3SNApHTET/exec";
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzHt-FtJxKMpc3S_wYEk3pkbCQAXAyAIBN4SFrvPP0dOUNLn0kSwa7EZ6FIoANSemGj/exec";
 
   const textarea = document.getElementById("textoEtapa");
   const btnSalvar = document.getElementById("btnSalvar");
@@ -84,11 +88,7 @@
     const texto = textarea.value.trim();
 
     if (!texto) {
-      Swal.fire({
-        icon: "warning",
-        title: "Campo vazio",
-        text: "Digite o texto antes de salvar."
-      });
+      Swal.fire({ icon: "warning", title: "Campo vazio", text: "Digite o texto antes de salvar." });
       return;
     }
 
@@ -96,36 +96,82 @@
     btnSalvar.innerText = "Salvando...";
 
     try {
-      // Envio "simples" (sem JSON e sem header) para evitar preflight
+      // Envia como FORM (o Apps Script lê via e.parameter)
       const form = new URLSearchParams();
       form.append("etapa", "Encerramento / Transformação");
       form.append("conteudo", texto);
 
-      await fetch(WEBAPP_URL, {
+      const resp = await fetch(WEBAPP_URL, {
         method: "POST",
-        mode: "no-cors", // evita bloqueio CORS (resposta fica "opaque")
-        body: form
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: form.toString()
       });
 
-      // Como mode:no-cors não permite ler a resposta, confirmamos o envio
-      Swal.fire({
+      const data = await resp.json();
+
+      if (!data.ok) {
+        throw new Error(data.error || "Falha ao salvar.");
+      }
+
+      // 1) Primeiro alerta (mantém como você pediu)
+      const r1 = await Swal.fire({
         icon: "success",
         title: "Enviado!",
-        //text: "O texto foi enviado para o Google Drive. Verifique seu Drive (arquivos recentes)."
+        text: "Conteúdo Salvo.",
+        confirmButtonText: "OK"
       });
 
+      // 2) Ao clicar OK, mostrar a tela de Encerramento (no mesmo estilo)
+      if (r1.isConfirmed) {
+        await Swal.fire({
+          title: `<div style="text-align:left">
+                    <div style="font-size:32px; font-weight:800; color:#0d6efd; margin-bottom:6px;">
+                      Encerramento
+                    </div>
+                    <div style="font-size:22px; font-weight:800; color:#16a34a;">
+                      Parabéns
+                    </div>
+                  </div>`,
+          html: `<div style="text-align:left; margin-top:10px">
+                  <div style="border-left:6px solid #16a34a; padding-left:14px; color:#374151; line-height:1.45">
+                    Você concluiu o desenvolvimento do seu curso! Clique no botão abaixo para abrir sua disciplina em uma nova aba.
+                    Faça uma conferência geral. Caso queria fazer algum ajuste, basta retornar a qualquer uma das etapas anteriores e atualizar os conteúdos ou os links.
+                    Se estiver tudo OK, basta clicar em finalizar, e o material será encaminhado para a nossa equipe de desenvolvimento.
+                  </div>
+
+                  <div style="margin-top:14px; font-size:12px; color:#6b7280">
+                    Salvo em: <b>${data.folderName || "Drive"}</b><br>
+                    Arquivo: <b>${data.fileName || "—"}</b>
+                  </div>
+                </div>`,
+          icon: undefined,
+          showConfirmButton: true,
+          confirmButtonText: "Abrir disciplina",
+          showCancelButton: true,
+          cancelButtonText: "Fechar",
+        }).then((r2) => {
+          if (r2.isConfirmed) {
+            // Coloque aqui o link da disciplina (ou o link que você quiser abrir)
+            // Exemplo:
+            window.open("https://www.google.com", "_blank");
+          }
+        });
+      }
+
     } catch (e) {
+      console.error(e);
       Swal.fire({
         icon: "error",
         title: "Erro ao salvar",
-        text: "Falha ao enviar para o Drive. Confira a implantação do Web App e sua conexão."
+        text: e.message || "Falha ao enviar para o Drive. Confira a implantação do Web App."
       });
-      console.error(e);
     } finally {
       btnSalvar.disabled = false;
-      btnSalvar.innerText = "Salvar";
+      btnSalvar.innerText = "Enviar";
     }
   });
+</script>
+
 </script>
 
 
