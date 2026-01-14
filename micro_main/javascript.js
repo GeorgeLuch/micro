@@ -1,17 +1,16 @@
-// javascript.js — CLIENTE
-// Salvamento automático (IndexedDB) + restauração após F5
-// Preview automático do YouTube
-// Envio ao Drive SOMENTE no botão final
+// ======================================================
+// javascript.js — Microcredenciais Paraná
+// Autosave + Restore (IndexedDB)
+// Preview do YouTube (VISUAL)
+// PDF Único Final
+// ======================================================
 
-/* =========================
-   CONFIG
-========================= */
 const APPS_SCRIPT_WEBAPP_URL =
   "https://script.google.com/macros/s/AKfycbzx5To8lK42s_ketzlHbXfXr6MN28yqHnmwcR14DSnrHP7UJRpZcNelUhX4_MPIwDSGKQ/exec";
 
-/* =========================
+/* ======================================================
    INDEXED DB
-========================= */
+====================================================== */
 const DB_NAME = "microcredenciais_db";
 const STORE_META = "meta";
 const STORE_TEXTS = "texts";
@@ -35,9 +34,9 @@ function openDB() {
   });
 }
 
-/* =========================
+/* ======================================================
    META
-========================= */
+====================================================== */
 async function putMeta(key, value) {
   const db = await openDB();
   db.transaction(STORE_META, "readwrite")
@@ -47,15 +46,15 @@ async function putMeta(key, value) {
 
 async function getMeta(key) {
   const db = await openDB();
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const req = db.transaction(STORE_META).objectStore(STORE_META).get(key);
     req.onsuccess = () => resolve(req.result?.value || "");
   });
 }
 
-/* =========================
-   TEXTOS (tópicos e textos longos)
-========================= */
+/* ======================================================
+   TEXTOS
+====================================================== */
 async function putText(field, value) {
   const db = await openDB();
   db.transaction(STORE_TEXTS, "readwrite")
@@ -65,15 +64,15 @@ async function putText(field, value) {
 
 async function getAllTexts() {
   const db = await openDB();
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const req = db.transaction(STORE_TEXTS).objectStore(STORE_TEXTS).getAll();
     req.onsuccess = () => resolve(req.result || []);
   });
 }
 
-/* =========================
-   YOUTUBE – PREVIEW
-========================= */
+/* ======================================================
+   YOUTUBE – PREVIEW (FUNCIONAL)
+====================================================== */
 function extractYoutubeId(url) {
   if (!url) return null;
   const regex =
@@ -86,205 +85,221 @@ function showYoutubePreview(videoId) {
   const preview = document.getElementById("youtubePreview");
   const iframe = document.getElementById("youtubeIframe");
   const status = document.getElementById("youtubeStatus");
-  const idSpan = document.getElementById("youtubeVideoId");
-  const input = document.getElementById("youtubeUrl");
 
-  if (!preview || !iframe || !status || !idSpan || !input) return;
+  if (!preview || !iframe) return;
 
   iframe.src = `https://www.youtube.com/embed/${videoId}`;
-  idSpan.textContent = videoId;
+  iframe.style.width = "100%";
+  iframe.style.height = "220px";
+  iframe.style.borderRadius = "8px";
 
   preview.classList.remove("d-none");
-  input.classList.add("is-valid");
-  input.classList.remove("is-invalid");
+  preview.style.display = "block";
 
-  status.textContent = "Link válido ✔";
-  status.classList.add("text-success");
-  status.classList.remove("text-danger");
+  if (status) {
+    status.textContent = "Vídeo carregado ✔";
+    status.classList.remove("text-danger");
+    status.classList.add("text-success");
+  }
 }
 
 function hideYoutubePreview() {
   const preview = document.getElementById("youtubePreview");
   const iframe = document.getElementById("youtubeIframe");
   const status = document.getElementById("youtubeStatus");
-  const input = document.getElementById("youtubeUrl");
 
-  if (!preview || !iframe || !status || !input) return;
+  if (!preview || !iframe) return;
 
   iframe.src = "";
   preview.classList.add("d-none");
-  input.classList.remove("is-valid", "is-invalid");
-  status.textContent = "";
-  status.classList.remove("text-success", "text-danger");
+  preview.style.display = "none";
+  if (status) status.textContent = "";
 }
 
-/* =========================
-   START
-========================= */
+/* ======================================================
+   AUTOSAVE + RESTORE
+====================================================== */
 document.addEventListener("DOMContentLoaded", async () => {
 
-  /* ===== DOM SEGURO ===== */
-  const courseName = document.getElementById("courseName");
-  const synopsis = document.getElementById("synopsis");
-  const textoEtapa = document.getElementById("textoEtapa");
+  const fields = document.querySelectorAll("input, textarea, select");
 
-  const youtubeUrl = document.getElementById("youtubeUrl");
-  const youtubeProfessor = document.getElementById("youtubeProfessor");
-  const lattesUrl = document.getElementById("lattesUrl");
+  /* ===== RESTAURAÇÃO ===== */
+  const texts = await getAllTexts();
+  const textMap = {};
+  texts.forEach(t => textMap[t.field] = t.value);
 
-  const dificuldade = document.getElementById("dificuldade");
-  const cargaHoraria = document.getElementById("cargaHoraria");
-  const nivel = document.getElementById("nivel");
-  const carga = document.getElementById("carga");
-
-  const synopsisCount = document.getElementById("synopsisCount");
-  const synopsisHint = document.getElementById("synopsisHint");
-
-  const textAreas = document.querySelectorAll(".texto");
-
-  /* =========================
-     FOCO AUTOMÁTICO NO 1º TÓPICO
-  ========================= */
-  const topico1 = document.getElementById("topico1");
-  if (topico1) setTimeout(() => topico1.focus(), 300);
-
-  /* =========================
-     SINOPSE – CONTADOR
-  ========================= */
-  function updateSynopsisUI() {
-    if (!synopsis || !synopsisCount || !synopsisHint) return;
-    const len = synopsis.value.length;
-    synopsisCount.textContent = len;
-    synopsis.classList.remove("is-valid", "is-invalid");
-
-    if (len === 0) {
-      synopsisHint.textContent = "Mínimo 350 e máximo 500 caracteres";
-    } else if (len < 350) {
-      synopsis.classList.add("is-invalid");
-      synopsisHint.textContent = `Faltam ${350 - len} caracteres`;
-    } else if (len > 500) {
-      synopsis.classList.add("is-invalid");
-      synopsisHint.textContent = `Excedeu ${len - 500} caracteres`;
-    } else {
-      synopsis.classList.add("is-valid");
-      synopsisHint.textContent = "Sinopse válida ✔";
+  for (const el of fields) {
+    if (el.dataset.field) {
+      el.value = textMap[el.dataset.field] || "";
+    } else if (el.id) {
+      el.value = await getMeta(el.id);
     }
   }
 
-  /* =========================
-     RESTAURAÇÃO APÓS F5
-  ========================= */
-  if (courseName) courseName.value = await getMeta("courseName");
-
-  if (synopsis) {
-    synopsis.value = await getMeta("synopsis");
-    updateSynopsisUI();
-  }
-
-  if (textoEtapa)
-    textoEtapa.value = await getMeta("textoEtapa");
-
-  if (youtubeUrl) {
+  /* ===== PREVIEW YOUTUBE (RESTORE) ===== */
+  const youtubeInput = document.getElementById("youtubeUrl");
+  if (youtubeInput) {
     const saved = await getMeta("youtubeUrl");
-    youtubeUrl.value = saved;
+    youtubeInput.value = saved || "";
+
     const id = extractYoutubeId(saved);
     if (id) showYoutubePreview(id);
+
+    youtubeInput.addEventListener("input", () => {
+      const idNow = extractYoutubeId(youtubeInput.value);
+      putMeta("youtubeUrl", youtubeInput.value);
+
+      if (idNow) showYoutubePreview(idNow);
+      else hideYoutubePreview();
+    });
   }
+/* ===== BOTÃO REMOVER LINK DO YOUTUBE ===== */
+const btnClearYoutube = document.getElementById("btnClearYoutube");
 
-  if (youtubeProfessor)
-    youtubeProfessor.value = await getMeta("youtubeProfessor");
+if (btnClearYoutube && youtubeInput) {
+  btnClearYoutube.addEventListener("click", async () => {
 
-  if (lattesUrl)
-    lattesUrl.value = await getMeta("lattesUrl");
+    // Limpa input
+    youtubeInput.value = "";
 
-  if (dificuldade)
-    dificuldade.value = (await getMeta("dificuldade")) || "facil";
+    // Remove do IndexedDB
+    await putMeta("youtubeUrl", "");
 
-  if (cargaHoraria)
-    cargaHoraria.value = (await getMeta("cargaHoraria")) || "20";
+    // Esconde preview
+    hideYoutubePreview();
 
-  if (nivel)
-    nivel.value = (await getMeta("nivel")) || "";
+    // Feedback visual
+    const status = document.getElementById("youtubeStatus");
+    if (status) {
+      status.textContent = "Link removido";
+      status.classList.remove("text-success");
+      status.classList.add("text-muted");
+    }
+  });
+}
 
-  if (carga)
-    carga.value = (await getMeta("carga")) || "";
+  /* ===== SALVAMENTO AUTOMÁTICO ===== */
+  fields.forEach(el => {
+    const handler = () => {
+      if (el.dataset.field) {
+        putText(el.dataset.field, el.value);
+      } else if (el.id) {
+        putMeta(el.id, el.value);
+      }
+    };
+    el.addEventListener("input", handler);
+    el.addEventListener("change", handler);
+  });
+
+  /* ===== BOTÃO FINAL ===== */
+  const btnFinal = document.getElementById("btnFinalizarApresentacao");
+  if (!btnFinal) return;
+
+  btnFinal.addEventListener("click", async e => {
+    e.preventDefault();
+
+    Swal.fire({
+      title: "Salvando tudo…",
+      text: "Gerando PDF da apresentação",
+      allowOutsideClick: false,
+      didOpen: () => Swal.showLoading()
+    });
+
+    try {
+      const pdfBytes = await gerarPdfApresentacaoCompleta();
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "apresentacao_microcredencial.pdf";
+      a.click();
+
+      Swal.fire("Concluído!", "PDF gerado com sucesso.", "success")
+        .then(() => window.location.href = "../desafio/desafio_0.html");
+
+    } catch (err) {
+      console.error(err);
+      Swal.fire("Erro", "Falha ao gerar o PDF.", "error");
+    }
+  });
+});
+
+/* ======================================================
+   PDF
+====================================================== */
+function wrapText(text, font, size, maxWidth) {
+  if (!text) return ["—"];
+  const words = text.split(" ");
+  const lines = [];
+  let line = "";
+
+  for (const word of words) {
+    const test = line ? line + " " + word : word;
+    if (font.widthOfTextAtSize(test, size) > maxWidth) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = test;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+async function gerarPdfApresentacaoCompleta() {
+  const courseName = await getMeta("courseName");
+  const synopsis = await getMeta("synopsis");
+  const nivel = await getMeta("nivel");
+  const carga = await getMeta("carga");
+  const textoCurso = await getMeta("textoEtapa");
+  const youtubeCurso = await getMeta("youtubeUrl");
+  const youtubeProfessor = await getMeta("youtubeProfessor");
+  const lattesUrl = await getMeta("lattesUrl");
 
   const texts = await getAllTexts();
-  const map = {};
-  texts.forEach(t => map[t.field] = t.value);
-  textAreas.forEach(t => t.value = map[t.dataset.field] || "");
+  const topicos = texts.filter(t => t.field >= 1 && t.field <= 4)
+    .sort((a, b) => a.field - b.field);
+  const textoProfessor = texts.find(t => t.field === 6)?.value || "";
 
-  /* =========================
-     EVENTOS – SALVAR AUTOMÁTICO
-  ========================= */
-  courseName?.addEventListener("input", () =>
-    putMeta("courseName", courseName.value)
-  );
+  const pdf = await PDFLib.PDFDocument.create();
+  const font = await pdf.embedFont(PDFLib.StandardFonts.Helvetica);
 
-  synopsis?.addEventListener("input", () => {
-    putMeta("synopsis", synopsis.value);
-    updateSynopsisUI();
+  let page = pdf.addPage([595.28, 841.89]);
+  let y = 800;
+
+  function novaPagina() {
+    page = pdf.addPage([595.28, 841.89]);
+    y = 800;
+  }
+
+  function bloco(titulo, texto) {
+    if (y < 120) novaPagina();
+    page.drawText(titulo, { x: 50, y, size: 14, font });
+    y -= 18;
+
+    wrapText(texto, font, 11, 495).forEach(l => {
+      if (y < 80) novaPagina();
+      page.drawText(l, { x: 50, y, size: 11, font });
+      y -= 14;
+    });
+    y -= 12;
+  }
+
+  page.drawText("APRESENTAÇÃO COMPLETA – MICROCREDENCIAIS", {
+    x: 50, y, size: 18, font
   });
+  y -= 40;
 
-  textoEtapa?.addEventListener("input", () =>
-    putMeta("textoEtapa", textoEtapa.value)
-  );
+  bloco("Curso", courseName);
+  bloco("Nível", nivel);
+  bloco("Carga Horária", carga ? `${carga} horas` : "");
+  bloco("Sinopse", synopsis);
+  topicos.forEach(t => bloco(`Tópico ${t.field}`, t.value));
+  bloco("Apresentação do Curso", textoCurso);
+  bloco("Vídeo do Curso (link)", youtubeCurso);
+  bloco("Apresentação do(a) Professor(a)", textoProfessor);
+  bloco("Vídeo do Professor (link)", youtubeProfessor);
+  bloco("Currículo Lattes", lattesUrl);
 
-  youtubeUrl?.addEventListener("input", async () => {
-    const url = youtubeUrl.value.trim();
-    await putMeta("youtubeUrl", url);
-
-    if (!url) {
-      hideYoutubePreview();
-      return;
-    }
-
-    const id = extractYoutubeId(url);
-    if (id) {
-      showYoutubePreview(id);
-    } else {
-      hideYoutubePreview();
-      youtubeUrl.classList.add("is-invalid");
-      const status = document.getElementById("youtubeStatus");
-      status.textContent = "Link inválido";
-      status.classList.add("text-danger");
-    }
-  });
-
-  document.getElementById("btnClearYoutube")?.addEventListener("click", async () => {
-    youtubeUrl.value = "";
-    await putMeta("youtubeUrl", "");
-    hideYoutubePreview();
-  });
-
-  youtubeProfessor?.addEventListener("input", () =>
-    putMeta("youtubeProfessor", youtubeProfessor.value)
-  );
-
-  lattesUrl?.addEventListener("input", () =>
-    putMeta("lattesUrl", lattesUrl.value)
-  );
-
-  dificuldade?.addEventListener("change", () =>
-    putMeta("dificuldade", dificuldade.value)
-  );
-
-  cargaHoraria?.addEventListener("change", () =>
-    putMeta("cargaHoraria", cargaHoraria.value)
-  );
-
-  nivel?.addEventListener("change", () =>
-    putMeta("nivel", nivel.value)
-  );
-
-  carga?.addEventListener("change", () =>
-    putMeta("carga", carga.value)
-  );
-
-  textAreas.forEach(t => {
-    t.addEventListener("input", () =>
-      putText(t.dataset.field, t.value)
-    );
-  });
-
-});
+  return await pdf.save();
+}
