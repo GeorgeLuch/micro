@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microcredenciais Paraná</title>
+
+  <!-- Bootswatch (Bootstrap) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
+
+  <!-- CSS próprio -->
+  <link rel="stylesheet" href="../css/encerramento.css">
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <!-- pdf-lib (usado no final do fluxo) -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+
+  <!-- JS principal -->
+  <script src="../javascript.js" defer></script>
+
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="../imagem/logo_microcredenciais.png" alt="Microcredenciais Paraná" height="80">
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTEÚDO -->
+  <main class="container">
+
+    <section class="hero-content">
+      <h1 class="title">
+        Encerramento / Transformação
+        <span class="subtitle"></span>
+      </h1>
+
+      <div class="message-box">
+        <p>
+          Nesta etapa, o professor deve fazer um encerramento geral do curso, além de parabenizar o aluno pela
+          finalização da jornada.
+        </p>
+
+      </div>
+      <p>
+        Também é o momento de o professor sugerir as próximas etapas, indicando assuntos a serem estudados ou
+        experimentos/exercícios que podem ser feitos para fixação dos conteúdos.
+      </p>
+
+      <!-- TEXTO – ENCERRAMENTO -->
+<label class="form-label fw-semibold" for="textoEncerramento">
+  Insira aqui o texto referente à etapa.
+</label>
+
+<textarea
+  id="textoEncerramento"
+  class="texto form-control form-control-lg mb-4"
+  rows="5"
+  placeholder="Insira aqui o texto referente à etapa.">
+</textarea>
+
+
+    </section>
+
+    <!-- LEMBRETE -->
+    <div class="message-box">
+
+    </div>
+
+    <!-- MENU -->
+    <div class="menu-grid">
+
+      <a href="./encerramento_0.html" class="menu-item blue">
+        <div class="icon-container">
+          <div class="icon-inner">
+            <img src="../imagem/esquerda.png" alt="Anterior" style="width:50%;">
+          </div>
+        </div>
+        <div class="label">Anterior</div>
+      </a>
+
+      <a href="../encerramento/encerramento_0.html" class="menu-item blue">
+        <div class="icon-container">
+          <div class="icon-inner">
+            <img src="../imagem/home.png" alt="Home" style="width:50%;">
+          </div>
+        </div>
+        <div class="label">Home</div>
+      </a>
+
+      <a href="./encerramento2.html" class="menu-item blue">
+        <div class="icon-container">
+          <div class="icon-inner">
+            <img src="../imagem/direita.png" alt="Próximo" style="width:50%;">
+          </div>
+        </div>
+        <div class="label">Próximo</div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bottom-nav">
+    <div class="footer-container">
+      <p class="copyright">
+        &copy; 2026 UVPR - Universidade Virtual do Paraná
+      </p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
