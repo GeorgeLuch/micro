@@ -3,109 +3,245 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Microcredenciais Paraná</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="../css/encerramento.css">
+
+  <!-- SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- PDF-lib -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 </head>
 
 <body>
 
-  <nav class="top-nav">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <img src="../imagem/logo_microcredenciais.png"
-             alt="Microcredenciais Paraná"
-             height="80">
-      </div>
+<!-- NAV -->
+<nav class="top-nav">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <img src="../imagem/logo_microcredenciais.png" height="80" alt="Microcredenciais Paraná">
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <main class="container">
+<!-- CONTEÚDO -->
+<main class="container">
 
-    <section class="hero-content">
-      <h1 class="title">
-        Encerramento
-        <span class="subtitle">Parabéns</span>
-      </h1>
+  <!-- ================= ENCERRAMENTO ================= -->
+  <section class="hero-content">
+    <h1 class="title">
+      Encerramento
+      <span class="subtitle">Parabéns</span>
+    </h1>
 
-      <div class="message-box">
-        <p>
-          Você concluiu o desenvolvimento do seu curso! Faça uma conferência geral.
-          Caso precise ajustar algo, retorne às etapas anteriores.
-          Estando tudo correto, clique em <strong>Enviar Anexos</strong> para realizar
-          o envio oficial no AVA Moodle.
+    <div class="message-box">
+      <p>
+        Você concluiu o desenvolvimento do seu curso! Faça uma conferência geral.
+        Caso precise ajustar algo, retorne às etapas anteriores.
+        Estando tudo correto, utilize as ações abaixo.
+      </p>
+
+      <!-- ===== AÇÃO 1: GERAR PDF ===== -->
+      <div style="text-align:center; margin-top:25px;">
+        <button id="btnFinalizarCurso" class="btn-moodle">
+          Gerar PDF Final
+        </button>
+      </div>
+
+      <!-- ===== AÇÃO 2: ENVIAR ANEXOS (MOODLE) ===== -->
+      <div style="text-align:center; margin-top:30px;">
+        <button id="btnMoodle" class="btn-moodle">
+          Enviar Anexos (Moodle)
+        </button>
+
+        <small class="upload-hint" style="display:block; margin-top:8px;">
+          PDF, imagens ou documentos • múltiplos arquivos
+        </small>
+
+        <p style="margin-top:10px; font-size:14px; color:#64748b;">
+          O envio oficial deve ser realizado no AVA Moodle da UVPR.
         </p>
       </div>
-    </section>
-
-    <!-- MENU -->
-    <div class="menu-grid">
-
-      <a href="./encerramento_0.html" class="menu-item blue">
-        <div class="icon-container">
-          <div class="icon-inner">
-            <img src="../imagem/esquerda.png" alt="Anterior" style="width:50%;">
-          </div>
-        </div>
-        <div class="label">Anterior</div>
-      </a>
-
-      <a href="../encerramento/encerramento_0.html" class="menu-item blue">
-        <div class="icon-container">
-          <div class="icon-inner">
-            <img src="../imagem/home.png" alt="Home" style="width:50%;">
-          </div>
-        </div>
-        <div class="label">Home</div>
-      </a>
-
-      <a href="./encerramento2.html" class="menu-item blue">
-        <div class="icon-container">
-          <div class="icon-inner">
-            <img src="../imagem/direita.png" alt="Próximo" style="width:50%;">
-          </div>
-        </div>
-        <div class="label">Próximo</div>
-      </a>
-
     </div>
+  </section>
 
-    <!-- ENVIO MOODLE -->
-    <div style="text-align:center; margin-top:30px;">
+</main>
 
-      <button id="btnMoodle" class="btn-moodle">
-        Enviar Anexos
-      </button>
+<footer class="bottom-nav">
+  <div class="footer-container">
+    <p>&copy; 2026 UVPR - Universidade Virtual do Paraná</p>
+  </div>
+</footer>
 
-      <small class="upload-hint" style="display:block; margin-top:8px;">
-        PDF, imagens ou documentos • múltiplos arquivos
-      </small>
+<!-- ======================================================
+     JAVASCRIPT — LEITURA DOS IDS + PDF + MOODLE
+====================================================== -->
+<script>
+/* ================= CONFIG ================= */
+const DB_NAME = "microcredenciais_db";
+const STORE_META = "meta";
 
-      <p style="margin-top:12px; font-size:14px; color:#64748b;">
-        O envio oficial deve ser realizado no AVA Moodle da UVPR.
-      </p>
+/* ================= DB ================= */
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, 1);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
 
-    </div>
+/* ================= META ================= */
+async function getMeta(key) {
+  const db = await openDB();
+  return new Promise(resolve => {
+    const req = db.transaction(STORE_META)
+      .objectStore(STORE_META)
+      .get(key);
+    req.onsuccess = () => resolve(req.result?.value || "");
+  });
+}
 
-  </main>
+/* ================= PDF FINAL ================= */
+async function gerarPdfFinal() {
 
-  <footer class="bottom-nav">
-    <div class="footer-container">
-      <p class="copyright">
-        &copy; 2026 UVPR - Universidade Virtual do Paraná
-      </p>
-    </div>
-  </footer>
+  const pdf = await PDFLib.PDFDocument.create();
+  const font = await pdf.embedFont(PDFLib.StandardFonts.Helvetica);
 
-  <!-- JAVASCRIPT -->
-  <script>
-    document.getElementById("btnMoodle").addEventListener("click", () => {
-      window.open(
-        "https://ava2.uvpr.pr.gov.br/mod/assign/view.php?id=2092",
-        "_blank"
-      );
+  let page = pdf.addPage([595.28, 841.89]);
+  let y = 800;
+
+  function bloco(titulo, conteudo) {
+    if (y < 100) {
+      page = pdf.addPage([595.28, 841.89]);
+      y = 800;
+    }
+    page.drawText(titulo, { x: 50, y, size: 14, font });
+    y -= 18;
+
+    (conteudo || "—").split("\n").forEach(l => {
+      page.drawText(l, { x: 50, y, size: 11, font });
+      y -= 14;
     });
-  </script>
+    y -= 18;
+  }
+
+  /* ===== IDS OBRIGATÓRIOS ===== */
+  const courseName = await getMeta("courseName");
+  const synopsis = await getMeta("synopsis");
+  const nivel = await getMeta("nivel");
+  const carga = await getMeta("carga");
+
+   /* ===== IDS Tópicos  ===== */
+  const topico1 = await getMeta("topico1");
+  const topico2 = await getMeta("topico2");
+  const topico3 = await getMeta("topico3");
+  const topico4 = await getMeta("topico4");
+
+  /* ===== Apresentação 3  ===== */
+  const textoCurso = await getMeta("textoEtapa");
+  const youtubeCurso = await getMeta("youtubeUrl");
+
+  /* ===== Apresentação 4  ===== */
+  const apnprofessor = await getMeta("apnprofessor");
+  const youtubeProfessor = await getMeta("youtubeProfessor");
+  const lattesUrl = await getMeta("lattesUrl");
+
+   /* ===== Desafio 2  ===== */
+  const desafio = await getMeta("desafio");
+
+  /* ===== Teorias e Conceitos 4  ===== */
+  const textounidade1 = await getMeta("textounidade1");
+  const youtubedaunidade = await getMeta("youtubedaunidade");
+
+  /* ===== Teorias e Conceitos 5  ===== */
+  const textounidade2 = await getMeta("textounidade2");
+  const youtubedaunidade2 = await getMeta("youtubedaunidade2");
+
+  /* ===== Teorias e Conceitos 6  ===== */
+  const textounidade3 = await getMeta("textounidade3");
+  const youtubedaunidade3 = await getMeta("youtubedaunidade3");
+
+ /* ===== Teorias e Conceitos 7  ===== */
+  const textounidade4 = await getMeta("textounidade4");
+  const youtubedaunidade4 = await getMeta("youtubedaunidade4");
+
+  /* ===== PDF ===== */
+  page.drawText("CURSO – MICROCREDENCIAIS PARANÁ", {
+    x: 50, y, size: 18, font
+  });
+  y -= 40;
+
+  bloco("Curso", courseName);
+  bloco("Sinopse", synopsis);
+  bloco("Nível", nivel);
+  bloco("Carga Horária", carga);
+  bloco("Apresentação do Curso", textoCurso);
+  bloco("Vídeo do Curso", youtubeCurso);
+
+  bloco("Apresentação do Professor", await getMeta("textounidade1"));
+  bloco("Vídeo do Professor", youtubeProfessor);
+  bloco("Currículo Lattes", lattesUrl);
+
+  bloco("Definição do Desafio", desafio);
+
+  bloco("Unidade 01", textounidade1);
+  bloco("Vídeo Unidade 01", youtubedaunidade);
+
+  bloco("Unidade 02", textounidade2);
+  bloco("Vídeo Unidade 02", youtubedaunidade2);
+
+  bloco("Unidade 03", textounidade3);
+  bloco("Vídeo Unidade 03", youtubedaunidade3);
+
+  bloco("Unidade 04", textounidade4);
+  bloco("Vídeo Unidade 04", youtubedaunidade4);
+
+  return await pdf.save();
+}
+
+/* ================= EVENTOS ================= */
+
+// GERAR PDF
+document.getElementById("btnFinalizarCurso")
+  .addEventListener("click", async () => {
+
+    Swal.fire({
+      title: "Gerando PDF final…",
+      allowOutsideClick: false,
+      didOpen: () => Swal.showLoading()
+    });
+
+    try {
+      const pdfBytes = await gerarPdfFinal();
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
+
+      window.open(url, "_blank");
+
+      Swal.fire(
+        "Concluído!",
+        "PDF final gerado com sucesso. Faça a conferência.",
+        "success"
+      );
+
+    } catch (err) {
+      console.error(err);
+      Swal.fire("Erro", err.message, "error");
+    }
+  });
+
+// REDIRECIONAR PARA MOODLE
+document.getElementById("btnMoodle")
+  .addEventListener("click", () => {
+    window.open(
+      "https://ava2.uvpr.pr.gov.br/mod/assign/view.php?id=2092",
+      "_blank"
+    );
+  });
+</script>
 
 </body>
 </html>
