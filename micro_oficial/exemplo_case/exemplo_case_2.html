@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microcredenciais Paraná</title>
+
+    <!-- Bootswatch -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <!-- pdf-lib -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+
+    <!-- JS principal -->
+    <script src="../javascript.js" defer></script>
+
+    <link rel="stylesheet" href="../css/apresentacao.css">
+</head>
+
+<body>
+
+    <!-- TOPO -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../imagem/logo_microcredenciais.png" height="80">
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <main class="container">
+
+        <section class="hero-content">
+
+            <h1 class="title">
+                Exemplos e cases
+                <span class="subtitle">Estudo de caso 01</span>
+            </h1>
+
+            <div class="message-box">
+                <p>
+                    Utilize os campos a seguir para enviar o conteúdo da etapa. Considere utilizar os recursos sugeridos
+                    também na etapa anterior. 
+                </p>
+            </div>
+
+           
+        </section>
+
+        <!-- TEXTO -->
+
+
+        <textarea class="texto form-control form-control-lg mb-4" data-field="6" rows="5"
+            placeholder="Insira aqui o texto referente ao ESTUDO DE CASO">
+    </textarea>
+
+        <!-- YOUTUBE -->
+        <label class="form-label fw-semibold">
+            Insira aqui o link para o vídeo principal da etapa
+        </label>
+
+        <input type="url" class="form-control mb-3" id="youtubeProfessor"
+            placeholder="https://www.youtube.com/watch?v=..." autocomplete="off">
+
+        <!-- LATTES -->
+        <label class="form-label fw-semibold">
+            Insira aqui demais links para imagens complementares, vídeos, pdfs, etc.
+        </label>
+
+        <input type="url" class="form-control mb-4" id="lattesUrl" placeholder=""
+            autocomplete="off">
+
+
+
+        <!-- NAVEGAÇÃO -->
+        <div class="menu-grid">
+
+            <a href="./exemplo_case_1.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/esquerda.png" style="width:50%">
+                    </div>
+                </div>
+                <div class="label">Anterior</div>
+            </a>
+
+            <a href="../exemplo_case/exemplo_case_0.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/home.png" style="width:50%">
+                    </div>
+                </div>
+                <div class="label">Home</div>
+            </a>
+            <a href="./exemplo_case_3.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/direita.png" alt="Próximo" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Próximo</div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="bottom-nav">
+        <div class="footer-container">
+            <p>&copy; 2026 UVPR - Universidade Virtual do Paraná</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
