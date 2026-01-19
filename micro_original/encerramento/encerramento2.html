@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microcredenciais Paraná</title>
+  <link rel="stylesheet" href="../css/encerramento.css">
+</head>
+
+<body>
+
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="../imagem/logo_microcredenciais.png"
+             alt="Microcredenciais Paraná"
+             height="80">
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <section class="hero-content">
+      <h1 class="title">
+        Encerramento
+        <span class="subtitle">Parabéns</span>
+      </h1>
+
+      <div class="message-box">
+        <p>
+          Você concluiu o desenvolvimento do seu curso! Faça uma conferência geral.
+          Caso precise ajustar algo, retorne às etapas anteriores.
+          Estando tudo correto, clique em <strong>Enviar Anexos</strong> para realizar
+          o envio oficial no AVA Moodle.
+        </p>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <div class="menu-grid">
+
+      <a href="./encerramento_0.html" class="menu-item blue">
+        <div class="icon-container">
+          <div class="icon-inner">
+            <img src="../imagem/esquerda.png" alt="Anterior" style="width:50%;">
+          </div>
+        </div>
+        <div class="label">Anterior</div>
+      </a>
+
+      <a href="../encerramento/encerramento_0.html" class="menu-item blue">
+        <div class="icon-container">
+          <div class="icon-inner">
+            <img src="../imagem/home.png" alt="Home" style="width:50%;">
+          </div>
+        </div>
+        <div class="label">Home</div>
+      </a>
+
+      <a href="./encerramento2.html" class="menu-item blue">
+        <div class="icon-container">
+          <div class="icon-inner">
+            <img src="../imagem/direita.png" alt="Próximo" style="width:50%;">
+          </div>
+        </div>
+        <div class="label">Próximo</div>
+      </a>
+
+    </div>
+
+    <!-- ENVIO MOODLE -->
+    <div style="text-align:center; margin-top:30px;">
+
+      <button id="btnMoodle" class="btn-moodle">
+        Enviar Anexos
+      </button>
+
+      <small class="upload-hint" style="display:block; margin-top:8px;">
+        PDF, imagens ou documentos • múltiplos arquivos
+      </small>
+
+      <p style="margin-top:12px; font-size:14px; color:#64748b;">
+        O envio oficial deve ser realizado no AVA Moodle da UVPR.
+      </p>
+
+    </div>
+
+  </main>
+
+  <footer class="bottom-nav">
+    <div class="footer-container">
+      <p class="copyright">
+        &copy; 2026 UVPR - Universidade Virtual do Paraná
+      </p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    document.getElementById("btnMoodle").addEventListener("click", () => {
+      window.open(
+        "https://ava2.uvpr.pr.gov.br/mod/assign/view.php?id=2092",
+        "_blank"
+      );
+    });
+  </script>
+
+</body>
+</html>
