@@ -146,7 +146,7 @@ body {
 
 .copyright {
     font-size: 0.8rem;
-    color: #888;
+    color: #FFF;
     margin: 0;
 }
 .dropdown {
@@ -290,5 +290,6 @@ body {
         .cyan { color: var(--cyan); border-color: var(--cyan); } .cyan .icon-inner { background-color: var(--cyan); }
 
         .bottom-nav { background-color: #333; color: white; padding: 20px 0; text-align: center; }
+
 
         
