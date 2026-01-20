@@ -595,3 +595,142 @@ body {
 
 
         .stage-mini { margin-bottom: 10px; }
+
+
+/* =========================================================
+   Modal (apresentacao_2.html): "Clique e confira um exemplo em texto"
+   - Estilos escopados para não interferir nas outras telas.
+   ========================================================= */
+
+/* A mesma aparência do botão quando for <button> */
+button.btn-container {
+    background: transparent;
+    border: 0;
+    /* Remove o padding padrão do botão sem afetar o layout do .btn-container */
+    padding: 0;
+    padding-left: 50px;
+}
+
+button.btn-container:focus-visible {
+    outline: 3px solid rgba(45, 125, 246, 0.35);
+    outline-offset: 4px;
+    border-radius: 14px;
+}
+
+/* Caixa do modal */
+#modalExemploTexto .exemplo-texto-modal {
+    border: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Faixa azul lateral */
+#modalExemploTexto .exemplo-texto-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 14px;
+    height: 100%;
+    background: var(--blue);
+}
+
+/* Botão fechar (círculo com X) */
+#modalExemploTexto .exemplo-texto-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 0;
+    background: #1f1f1f;
+    color: #fff;
+    font-size: 36px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.96;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    z-index: 2;
+}
+
+#modalExemploTexto .exemplo-texto-close:hover {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+/* Conteúdo */
+#modalExemploTexto .exemplo-texto-body {
+    padding: 42px 48px 36px 56px;
+}
+
+#modalExemploTexto .exemplo-texto-topo {
+    margin: 0 0 18px 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+#modalExemploTexto .exemplo-texto-nome {
+    display: block;
+    font-weight: 800;
+    color: var(--blue);
+    font-size: 1.35rem;
+    margin-top: 6px;
+}
+
+#modalExemploTexto .exemplo-texto-titulo {
+    margin: 18px 0 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #333;
+}
+
+#modalExemploTexto .exemplo-texto-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 18px;
+    align-items: start;
+    margin: 18px 0;
+}
+
+#modalExemploTexto .exemplo-texto-icone {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(0, 0, 0, 0.14);
+    color: #333;
+}
+
+#modalExemploTexto .exemplo-icone-verde { background: #3ce2a0; }
+#modalExemploTexto .exemplo-icone-roxo  { background: #c9a7ff; }
+#modalExemploTexto .exemplo-icone-amarelo { background: #ffd36b; }
+
+#modalExemploTexto .exemplo-texto-paragrafo {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    #modalExemploTexto .exemplo-texto-body {
+        padding: 24px 20px 20px 26px;
+    }
+
+    #modalExemploTexto .exemplo-texto-item {
+        grid-template-columns: 56px 1fr;
+        gap: 14px;
+    }
+
+    #modalExemploTexto .exemplo-texto-close {
+        width: 46px;
+        height: 46px;
+        font-size: 30px;
+    }
+}
