@@ -42,111 +42,190 @@
   </nav>
 
   <!-- CONTEÚDO -->
-  <!-- <main class="container"> -->
-    <main style="width: min(96vw, 1700px); margin: 32px auto 40px; padding: 24px 16px; flex: 1; background: transparent; box-shadow: none; border-radius: 0; box-sizing: border-box;">
+<main class="layout-container main-content">
 
-    <section class="hero-content">
-      <h1 class="title">
-        Apresentação
-        <span class="subtitle">Nome completo do curso e sinopse</span>
-      </h1>
+  <section class="hero-content mb-4">
+    <h1 class="title">
+      Apresentação
+      <span class="subtitle">Nome completo do curso e sinopse</span>
+    </h1>
+
+    <div class="message-box">
+      <p>
+        Ao acessar a <b>página do seu curso</b>, o estudante precisa ter
+        acesso a informações essenciais. Preencha os campos abaixo.
+      </p>
+    </div>
+  </section>
+
+  <!-- GRID PRINCIPAL -->
+  <div class="row g-4 align-items-start">
+
+    <!-- COLUNA ESQUERDA – FORMULÁRIO -->
+    <div class="col-12 col-lg-8">
+
+      <!-- NOME DO CURSO -->
+      <label class="form-label fw-semibold">
+        Nome completo do curso
+      </label>
+
+      <textarea
+        id="courseName"
+        class="stage-mini form-control form-control-lg mb-3"
+        rows="1"
+        placeholder="Clique aqui para inserir o nome completo do curso">
+      </textarea>
+
+      <!-- SINOPSE -->
+      <label class="form-label fw-semibold">
+        Sinopse do curso
+      </label>
+
+      <textarea
+        id="synopsis"
+        class="stage-mini form-control form-control-lg"
+        rows="5"
+        placeholder="Insira aqui uma sinopse do curso, entre 350 e 500 caracteres.">
+      </textarea>
+
+      <div class="d-flex justify-content-between mt-1 mb-3">
+        <small class="text-muted">
+          Mínimo 350 e máximo 500 caracteres
+        </small>
+        <small>
+          <span id="synopsisCount">0</span>/500
+        </small>
+      </div>
 
       <div class="message-box">
         <p>
-          Ao acessar a <b>página do seu curso</b>, o estudante precisa ter
-          acesso a informações essenciais. Preencha os campos abaixo.
+          <b>LEMBRETE:</b> O conteúdo digitado é salvo automaticamente.
+          Você poderá retornar a esta etapa a qualquer momento.
         </p>
       </div>
-    </section>
 
-    <!-- NOME DO CURSO -->
-    <label class="form-label fw-semibold">
-      Nome completo do curso
-    </label>
+    </div>
 
-    <textarea
-      id="courseName"
-      class="stage-mini form-control form-control-lg mb-3"
-      rows="1"
-      placeholder="Clique aqui para inserir o nome completo do curso">
-    </textarea>
+    
+   <!-- COLUNA DIREITA – IMAGEM EXEMPLO -->
+<div class="col-12 col-lg-4">
 
-    <!-- SINOPSE -->
-    <label class="form-label fw-semibold">
-      Sinopse do curso
-    </label>
+  <div class="card shadow-sm sticky-top"
+       style="top: 8px; margin-top: -150px; transform: translateX(60px);">
 
-    <textarea
-      id="synopsis"
-      class="stage-mini form-control form-control-lg"
-      rows="5"
-      placeholder="Insira aqui uma sinopse do curso, entre 350 e 500 caracteres. Vá direto ao ponto e destaque o diferencial do curso.">
-    </textarea>
+    <div class="card-body text-center">
 
-    <!-- CONTADOR / VALIDAÇÃO -->
-    <div class="d-flex justify-content-between mt-1 mb-3">
-      <small id="synopsisHint" class="text-muted">
-        Mínimo 350 e máximo 500 caracteres
+      <h6 class="fw-semibold mb-3">
+        Clique na imagem abaixo para ver o exemplo.
+      </h6>
+
+      <img
+        src="../imagem/exemplosinopse.png"
+        alt="Exemplo de tópicos na página inicial"
+        class="img-fluid rounded border preview-img"
+        data-bs-toggle="modal"
+        data-bs-target="#modalImagemExemplo"
+        style="cursor: zoom-in;">
+
+      <small class="text-muted d-block mt-2">
+        Clique na imagem para ampliar
       </small>
-      <small>
-        <span id="synopsisCount">0</span>/500
-      </small>
-    </div>
-
-    <!-- LEMBRETE -->
-    <div class="message-box">
-      <p>
-        <b>
-          LEMBRETE:
-        </b>
-        O conteúdo digitado é salvo automaticamente.
-        Você poderá retornar a esta etapa a qualquer momento para atualizações.
-      </p>
-    </div>
-
-    <!-- MENU -->
-    <div class="menu-grid">
-
-      <a href="../index.html" class="menu-item blue">
-        <div class="icon-container">
-          <div class="icon-inner">
-            <img src="../imagem/esquerda.png" alt="Anterior" style="width:50%;">
-          </div>
-        </div>
-        <div class="label">Anterior</div>
-      </a>
-
-      <a href="../index.html" class="menu-item blue">
-        <div class="icon-container">
-          <div class="icon-inner">
-            <img src="../imagem/home.png" alt="Home" style="width:50%;">
-          </div>
-        </div>
-        <div class="label">Home</div>
-      </a>
-
-      <a href="./apresentacao_1.html" class="menu-item blue">
-        <div class="icon-container">
-          <div class="icon-inner">
-            <img src="../imagem/direita.png" alt="Próximo" style="width:50%;">
-          </div>
-        </div>
-        <div class="label">Próximo</div>
-      </a>
 
     </div>
+  </div>
 
-  </main>
+</div>
+<!-- MODAL – IMAGEM AMPLIADA -->
+<div class="modal fade" id="modalImagemExemplo" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Exemplo de Visualização
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Fechar">
+        </button>
+      </div>
+
+      <div class="modal-body text-center">
+        <img
+          src="../imagem/exmplotopico.png"
+          alt="Exemplo ampliado"
+          class="img-fluid rounded shadow">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <!-- MENU -->
+  <div class="menu-grid mt-4">
+
+    <a href="../index.html" class="menu-item blue">
+      <div class="icon-container">
+        <div class="icon-inner">
+          <img src="../imagem/esquerda.png" style="width:50%;">
+        </div>
+      </div>
+      <div class="label">Anterior</div>
+    </a>
+
+    <a href="../index.html" class="menu-item blue">
+      <div class="icon-container">
+        <div class="icon-inner">
+          <img src="../imagem/home.png" style="width:50%;">
+        </div>
+      </div>
+      <div class="label">Home</div>
+    </a>
+
+    <a href="./apresentacao_1.html" class="menu-item blue">
+      <div class="icon-container">
+        <div class="icon-inner">
+          <img src="../imagem/direita.png" style="width:50%;">
+        </div>
+      </div>
+      <div class="label">Próximo</div>
+    </a>
+
+  </div>
+
+</main>
+
+<div class="modal fade" id="modalImagemExemplo" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Exemplo de Visualização</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <img
+          src="../imagem/exmplotopico.png"
+          class="img-fluid rounded shadow">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
     <!-- </main> -->
 
   <!-- FOOTER -->
-  <footer class="bottom-nav">
-    <div class="footer-container" style="max-width: 1700px; width: 96%;">
-      <p class="copyright">
-        &copy; 2026 UVPR - Universidade Virtual do Paraná
-      </p>
-    </div>
-  </footer>
+ <footer class="bottom-nav">
+        <div class="footer-container" style="max-width: 1700px; width: 96%;">
+            <p class="copyright">&copy; 2026 UVPR - Universidade Virtual do Paraná</p>
+        </div>
+    </footer>
 
 </body>
 </html>
