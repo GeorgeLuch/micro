@@ -542,15 +542,207 @@ body {
   }
 }
 
-/* Áudio */
-.audio-icon-img {
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+
+
+/* =========================================================
+   Botão e Modal (encerramento1.html): "Clique e confira um exemplo em texto"
+   - Estilos escopados para não interferir nas outras telas.
+   ========================================================= */
+
+/* Botão (mesmo padrão do usado em apresentacao_2.html) */
+.btn-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-left: 50px; /* Espaço para a lâmpada não cobrir o texto */
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s;
 }
 
-.audio-icon-img:hover {
-  transform: scale(1.1);
-  opacity: 0.85;
+.btn-container:hover {
+    transform: scale(1.02);
+}
+
+/* Corpo do botão */
+.btn-body {
+    background-color: #f07d00;
+    color: white;
+    padding: 15px 30px 15px 60px;
+    border-radius: 12px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    min-width: 250px;
+}
+
+/* Círculo do ícone */
+.icon-circle {
+    position: absolute;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background-color: #f3cc6b;
+    border: 3px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* SVG da lâmpada */
+.lamp-svg {
+    width: 60px;
+    height: 60px;
+    fill: none;
+    stroke: #333;
+    stroke-width: 2;
+}
+
+/* A mesma aparência do botão quando for <button> */
+button.btn-container {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    padding-left: 50px;
+}
+
+button.btn-container:focus-visible {
+    outline: 3px solid rgba(45, 125, 246, 0.35);
+    outline-offset: 4px;
+    border-radius: 14px;
+}
+
+/* ===== Modal (Encerramento) ===== */
+
+/* Caixa do modal */
+#modalExemploEncerramento .exemplo-texto-modal {
+    border: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Faixa lateral (teal, como no exemplo) */
+#modalExemploEncerramento .exemplo-texto-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 14px;
+    height: 100%;
+    background: var(--teal);
+}
+
+/* Botão fechar (círculo com X) */
+#modalExemploEncerramento .exemplo-texto-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 0;
+    background: #1f1f1f;
+    color: #fff;
+    font-size: 36px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.96;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    z-index: 2;
+}
+
+#modalExemploEncerramento .exemplo-texto-close:hover {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+/* Conteúdo */
+#modalExemploEncerramento .exemplo-texto-body {
+    padding: 42px 48px 36px 56px;
+}
+
+#modalExemploEncerramento .exemplo-texto-topo {
+    margin: 0 0 18px 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+#modalExemploEncerramento .exemplo-texto-nome {
+    display: block;
+    font-weight: 800;
+    color: var(--primary-color);
+    font-size: 1.35rem;
+    margin-top: 6px;
+}
+
+#modalExemploEncerramento .exemplo-texto-titulo {
+    margin: 18px 0 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #333;
+}
+
+#modalExemploEncerramento .exemplo-texto-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 18px;
+    align-items: start;
+    margin: 18px 0;
+}
+
+#modalExemploEncerramento .exemplo-texto-icone {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(0, 0, 0, 0.14);
+    color: #333;
+}
+
+#modalExemploEncerramento .exemplo-icone-amarelo { background: #ffd36b; }
+
+#modalExemploEncerramento .exemplo-texto-paragrafo {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+#modalExemploEncerramento .exemplo-texto-paragrafo p {
+    margin: 0;
+}
+
+#modalExemploEncerramento .exemplo-texto-lista {
+    margin: 10px 0 0 18px;
+    padding: 0;
+}
+
+#modalExemploEncerramento .exemplo-texto-lista li {
+    margin: 6px 0;
+}
+
+@media (max-width: 768px) {
+    #modalExemploEncerramento .exemplo-texto-body {
+        padding: 24px 20px 20px 26px;
+    }
+
+    #modalExemploEncerramento .exemplo-texto-item {
+        grid-template-columns: 56px 1fr;
+        gap: 14px;
+    }
+
+    #modalExemploEncerramento .exemplo-texto-close {
+        width: 46px;
+        height: 46px;
+        font-size: 30px;
+    }
 }
