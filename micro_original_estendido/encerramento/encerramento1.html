@@ -48,33 +48,6 @@
         Encerramento / Transformação
         <span class="subtitle"></span>
       </h1>
-<br>
-<!-- ÁUDIO EXPLICATIVO (INLINE, SEM MODAL) -->
-<div class="mb-3">
-
-  <!-- ÍCONE DE ÁUDIO -->
-  <img
-    src="../imagem/audio.png"
-    alt="Ouvir orientações"
-    title="Ouvir orientações"
-    class="audio-icon-img"
-    onclick="toggleAudioOrientacoes8()">
-
-  <!-- PLAYER INLINE (OCULTO POR PADRÃO) -->
-  <div id="audioInlineOrientacoes8"
-       style="display:none; margin-top:8px; max-width:280px;">
-
-    <iframe
-      src="https://drive.google.com/file/d/11LHTxSS4v08h6-D78ahKwj_4dCwgiBnF/preview"
-      width="100%"
-      height="48"
-      allow="autoplay"
-      style="border:0; border-radius:6px;">
-    </iframe>
-
-  </div>
-
-</div>
 
       <div class="message-box">
         <p>
@@ -99,6 +72,26 @@
   rows="5"
   placeholder="Insira aqui o texto referente à etapa.">
 </textarea>
+
+
+<div class="message-box">
+  <p><b>Clique e confira um exemplo em texto:</b></p>
+
+  <!-- Botão abre modal -->
+  <button type="button" class="btn-container" data-bs-toggle="modal" data-bs-target="#modalExemploEncerramento" aria-label="Abrir exemplo em texto">
+    <div class="icon-circle">
+      <svg class="lamp-svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18h6m-3-15a7 7 0 0 1 5.4 11.4l-.4.6c-.6.6-1 1.4-1 2.3V19a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-1.7c0-.9-.4-1.7-1-2.3l-.4-.6A7 7 0 0 1 12 3z"/>
+      </svg>
+    </div>
+
+    <div class="btn-body">
+      Clique e confira<br>
+      um exemplo<br>
+      em texto
+    </div>
+  </button>
+</div>
 
 
     </section>
@@ -143,6 +136,49 @@
   </main>
     <!-- </main> -->
 
+
+
+  <!-- Modal: exemplo em texto (Encerramento) -->
+  <div class="modal fade" id="modalExemploEncerramento" tabindex="-1" aria-labelledby="modalExemploEncerramentoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content exemplo-texto-modal">
+        <div class="exemplo-texto-accent" aria-hidden="true"></div>
+        <button type="button" class="exemplo-texto-close" data-bs-dismiss="modal" aria-label="Fechar">&times;</button>
+
+        <div class="modal-body exemplo-texto-body">
+          <p class="exemplo-texto-topo" id="modalExemploEncerramentoLabel">
+            Este exemplo considera um curso fictício com o seguinte nome:<br>
+            <span class="exemplo-texto-nome">O Uso da Inteligência Artificial no Planejamento Pedagógico</span>
+          </p>
+
+          <p class="exemplo-texto-titulo">MODELO ENCERRAMENTO:</p>
+
+          <div class="exemplo-texto-item">
+            <div class="exemplo-texto-icone exemplo-icone-amarelo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+              </svg>
+            </div>
+
+            <div class="exemplo-texto-paragrafo">
+              <p><b>Parabéns por concluir esta disciplina!</b><br>
+              Esperamos que você tenha adquirido ferramentas e perspectivas para integrar a Inteligência Artificial ao seu planejamento pedagógico de forma ética, criativa e eficaz.</p>
+
+              <p style="margin-top: 14px;"><b>Próximos passos sugeridos:</b></p>
+              <ul class="exemplo-texto-lista">
+                <li>Participar de grupos de prática e pesquisa em IA educacional.</li>
+                <li>Experimentar ferramentas emergentes de IA generativa.</li>
+                <li>Continuar sua formação com cursos sobre avaliação automatizada, análise de dados e personalização do ensino.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- FOOTER -->
   <footer class="bottom-nav">
     <div class="footer-container" style="max-width: 1700px; width: 96%;">
@@ -151,13 +187,6 @@
       </p>
     </div>
   </footer>
-<script>
-function toggleAudioOrientacoes8() {
-  const audio = document.getElementById("audioInlineOrientacoes8");
-  audio.style.display =
-    audio.style.display === "none" ? "block" : "none";
-}
-</script>
 
 </body>
 
