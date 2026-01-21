@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Bootswatch (já inclui Bootstrap) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <!-- pdf-lib -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+    <!-- Seu JS -->
+    <script src="../javascript.js" defer></script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microcredenciais Paraná</title>
+    <link rel="stylesheet" href="../css/apresentacao.css">
+
+</head>
+
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-container" style="max-width: 1700px; width: 96%;">
+            <div class="nav-logo"><img src="../imagem/logo_microcredenciais.png" alt="Descrição da imagem" height="80">
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <!-- <main class="container"> -->
+    <main style="width: min(96vw, 1700px); margin: 32px auto 40px; padding: 24px 16px; flex: 1; background: transparent; box-shadow: none; border-radius: 0; box-sizing: border-box;">
+            <section class="hero-content">
+                <h1 class="title">Apresentação<span class="subtitle">Agora é a sua vez!</span></h1>
+                <div class="message-box">
+                    <p>Envie a apresentação do seu curso. Escreva como se estivesse conversando com o aluno — isso ajuda
+                        a gerar engajamento e aproximação logo no início da jornada.</p>
+
+                </div>
+                <p>
+                    Se você optar pela apresentação em vídeo, entre em contato com seu Coordenador. Ele agendará com
+                    o setor de audiovisual da sua instituição a gravação em estúdio próprio.
+                </p>
+                <p>
+                    Para esta gravação, sugerimos um vídeo de no máximo de 03 (três) minutos. Se o vídeo já foi gravado,
+                    basta inserir o link no campo devido.
+                </p>
+                <p>Neste vídeo, o professor deve focar na apresentação do curso, seguindo a mesma estrutura sugerida
+                    para o texto. A apresentação do professor é feita em outro momento.</p>
+                <p>Se quiser que o vídeo seja acompanhado de um texto, pode utilizar o campo ao lado para enviá-lo.</p>
+            </section>
+
+            <label class="form-label fw-semibold">Insira aqui a apresentação do curso</label>
+            <textarea id="textoEtapa" class="stage-mini form-control form-control-lg" rows="5"
+                placeholder="Insira aqui a apresentação do curso"></textarea>
+
+
+          <!-- YOUTUBE -->
+<div class="col-12">
+  <label class="form-label fw-semibold">Link do vídeo no YouTube</label>
+  <input
+    type="url"
+    class="form-control"
+    id="youtubeUrl"
+    placeholder="https://www.youtube.com/watch?v=..."
+    autocomplete="off"
+  />
+  <div class="form-text" id="youtubeStatus"></div>
+
+  <!-- Preview -->
+  <div class="yt-preview mt-3 d-none" id="youtubePreview">
+    <iframe id="youtubeIframe" allowfullscreen></iframe>
+    <div class="p-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div class="small text-secondary">
+        <span class="file-pill me-2">YOUTUBE</span>
+        <span id="youtubeVideoId">—</span>
+      </div>
+      <button class="btn btn-outline-danger mini-btn" type="button" id="btnClearYoutube">
+        Remover link
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+                <!--<button id="btnSalvar" class="btn btn-success mt-3">
+                    Enviar
+                </button> -->
+                <!---
+            <div class="message-box">
+                <p><b>LEMBRETE: Ao clicar no botão "Próximo", o conteúdo digitado é salvo, você poderá voltar a ele a qualquer momento para eventuais atualizações.</b></p>
+            </div> -->
+
+
+                <div class="menu-grid">
+
+                    <a href="./apresentacao_3.html" class="menu-item blue">
+                        <div class="icon-container">
+                            <div class="icon-inner">
+                                <img src="../imagem/esquerda.png" alt="Avaliação" style="width: 50%; height: auto;">
+                            </div>
+                        </div>
+                        <div class="label">Anterior</div>
+                    </a>
+
+                    <a href="../index.html" class="menu-item blue">
+                        <div class="icon-container">
+                            <div class="icon-inner">
+                                <img src="../imagem/home.png" alt="Avaliação" style="width: 50%; height: auto;">
+                            </div>
+                        </div>
+                        <div class="label">Home</div>
+                    </a>
+
+                    <a href="./apresentacao_4.html" class="menu-item blue">
+                        <div class="icon-container">
+                            <div class="icon-inner">
+                                <img src="../imagem/direita.png" alt="Encerramento" style="width: 50%; height: auto;">
+                            </div>
+                        </div>
+                        <div class="label">Próximo</div>
+                    </a>
+                </div>
+            </div>
+
+        </main>
+    <!-- </main> -->
+
+        <footer class="bottom-nav">
+            <div class="footer-container" style="max-width: 1700px; width: 96%;">
+                <p class="copyright">&copy; 2026 UVPR - Universidade Virtual do Paraná</p>
+            </div>
+        </footer>
+
+</body>
+
+</html>
