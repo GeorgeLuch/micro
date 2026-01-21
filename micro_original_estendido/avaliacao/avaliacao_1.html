@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microcredenciais Paraná</title>
+
+    <!-- Bootswatch (Bootstrap) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
+
+    <!-- CSS próprio -->
+    <link rel="stylesheet" href="../css/avaliacao.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <!-- pdf-lib (usado no final do fluxo) -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+
+    <!-- JS principal -->
+    <script src="../javascript.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="top-nav">
+        <div class="nav-container" style="max-width: 1700px; width: 96%;">
+            <div class="nav-logo">
+                <img src="../imagem/logo_microcredenciais.png" alt="Microcredenciais Paraná" height="80">
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <!-- <main class="container"> -->
+    <main style="width: min(96vw, 1700px); margin: 32px auto 40px; padding: 24px 16px; flex: 1; background: transparent; box-shadow: none; border-radius: 0; box-sizing: border-box;">
+
+        <section class="hero-content">
+            <h1 class="title">
+                Avaliação
+                <span class="subtitle"></span>
+            </h1>
+
+<br>
+<!-- ÁUDIO EXPLICATIVO (INLINE, SEM MODAL) -->
+<div class="mb-3">
+
+  <!-- ÍCONE DE ÁUDIO -->
+  <img
+    src="../imagem/audio.png"
+    alt="Ouvir orientações"
+    title="Ouvir orientações"
+    class="audio-icon-img"
+    onclick="toggleAudioOrientacoes7()">
+
+  <!-- PLAYER INLINE (OCULTO POR PADRÃO) -->
+  <div id="audioInlineOrientacoes7"
+       style="display:none; margin-top:8px; max-width:280px;">
+
+    <iframe
+      src="https://drive.google.com/file/d/18KsDIOthMF7NaUGeYpsPwbgZqUb7oJ7T/preview"
+      width="100%"
+      height="48"
+      allow="autoplay"
+      style="border:0; border-radius:6px;">
+    </iframe>
+
+  </div>
+
+</div>
+
+
+
+            <div class="message-box">
+
+                <p>
+                    Nesta etapa, a avaliação será realizada por meio de um questionário objetivo. No caso de cursos de
+                    20 horas serão 5 questões relacionadas ao conteúdo e 3 questões sobre o curso em si. No caso dos
+                    cursos de 40 horas, são 08 questões relacionadas ao conteúdo, e 03 questões sobre o curso.
+                </p>
+            </div>
+            <p>
+                As questões sobre o conteúdo visam verificar a compreensão dos temas abordados e o desenvolvimento das
+                competências propostas. Já as relacionadas ao curso, buscam a análise da metodologia, da didática, dos
+                materiais utilizados e da organização da experiência formativa. 
+            </p>
+
+
+        </section>
+
+        <!-- LEMBRETE -->
+        <div class="message-box">
+
+        </div>
+
+        <!-- MENU -->
+        <div class="menu-grid">
+
+            <a href="./avaliacao_0.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/esquerda.png" alt="Anterior" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Anterior</div>
+            </a>
+
+            <a href="../avaliacao/avaliacao_0.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/home.png" alt="Home" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Home</div>
+            </a>
+
+            <a href="./avaliacao_2.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/direita.png" alt="Próximo" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Próximo</div>
+            </a>
+
+        </div>
+
+    </main>
+    <!-- </main> -->
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <div class="footer-container" style="max-width: 1700px; width: 96%;">
+            <p class="copyright">
+                &copy; 2026 UVPR - Universidade Virtual do Paraná
+            </p>
+        </div>
+    </footer>
+<script>
+function toggleAudioOrientacoes7() {
+  const audio = document.getElementById("audioInlineOrientacoes7");
+  audio.style.display =
+    audio.style.display === "none" ? "block" : "none";
+}
+</script>
+
+</body>
+
+</html>
