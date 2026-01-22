@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microcredenciais Paraná</title>
+
+    <!-- Bootswatch (Bootstrap) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
+
+    <!-- CSS próprio -->
+    <link rel="stylesheet" href="../css/teoria_conceito.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <!-- pdf-lib (usado no final do fluxo) -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+
+    <!-- JS principal -->
+    <script src="../javascript.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="top-nav">
+        <div class="nav-container" style="max-width: 1700px; width: 96%;">
+            <div class="nav-logo">
+                <img src="../imagem/logo_microcredenciais.png" alt="Microcredenciais Paraná" height="80">
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <!-- <main class="container"> -->
+    <main style="width: min(96vw, 1700px); margin: 32px auto 40px; padding: 24px 16px; flex: 1; background: transparent; box-shadow: none; border-radius: 0; box-sizing: border-box;">
+
+        <section class="hero-content">
+            <h1 class="title">
+                Teorias e conceitos
+                <span class="subtitle"></span>
+            </h1>
+            <br>
+
+<!-- ÁUDIO EXPLICATIVO (INLINE, SEM MODAL) -->
+<div class="mb-3">
+
+  <!-- ÍCONE DE ÁUDIO -->
+  <img
+    src="../imagem/audio.png"
+    alt="Ouvir orientações"
+    title="Ouvir orientações"
+    class="audio-icon-img"
+    onclick="toggleAudioOrientacoes2()">
+
+  <!-- PLAYER INLINE (OCULTO POR PADRÃO) -->
+  <div id="audioInlineOrientacoes2"
+       style="display:none; margin-top:8px; max-width:280px;">
+
+    <iframe
+      src="https://drive.google.com/file/d/1KSuaOX_STtgcrH2WVbLS3mNIOvgttZD6/preview"
+      width="100%"
+      height="48"
+      allow="autoplay"
+      style="border:0; border-radius:6px;">
+    </iframe>
+
+  </div>
+
+</div>
+
+            <div class="message-box">
+                <p>
+                    Os cursos de 20 horas devem ter 02 (duas) unidades de conteúdo. E os cursos com 40 horas, 04
+                    (quatro) unidades.
+                </p>
+                <p>
+                    Nesta , o professor deverá apresentar o conteúdo teórico fundamental que dá suporte ao
+                    desenvolvimento das competências previstas na microcredencial. O objetivo é fornecer as bases
+                    conceituais essenciais para a compreensão do desafio proposto e para a aplicação prática dos
+                    conhecimentos ao longo do curso.
+                </p>
+                <p>
+                    O texto deve ser construído em formato dialógico, como se estivesse em conversa direta com o
+                    estudante, utilizando uma linguagem clara, objetiva e acessível. 
+                </p>
+            </div>
+        </section>
+
+        <!-- LEMBRETE -->
+        <div class="message-box">
+            <p>
+                <b>
+                    LEMBRETE:
+                </b>
+                O conteúdo digitado é salvo automaticamente.
+                Você poderá retornar a esta etapa a qualquer momento para atualizações.
+            </p>
+        </div>
+
+        <!-- MENU -->
+        <div class="menu-grid">
+
+            <a href="teoria_conceito_0.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/esquerda.png" alt="Anterior" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Anterior</div>
+            </a>
+
+            <a href="../teoria_conceito/teoria_conceito_0.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/home.png" alt="Home" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Home</div>
+            </a>
+
+            <a href="./teoria_conceito_02.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/direita.png" alt="Próximo" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Próximo</div>
+            </a>
+
+        </div>
+
+    </main>
+    <!-- </main> -->
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <div class="footer-container" style="max-width: 1700px; width: 96%;">
+            <p class="copyright">
+                &copy; 2026 UVPR - Universidade Virtual do Paraná
+            </p>
+        </div>
+    </footer>
+<!-- SCRIPT DO ÁUDIO -->
+<script>
+function toggleAudioOrientacoes2() {
+  const audio = document.getElementById("audioInlineOrientacoes2");
+
+  audio.style.display =
+    audio.style.display === "none" ? "block" : "none";
+}
+</script>
+
+</body>
+
+</html>
