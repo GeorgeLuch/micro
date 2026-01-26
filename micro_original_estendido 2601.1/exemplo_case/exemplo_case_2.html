@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microcredenciais Paraná</title>
+
+  <!-- Bootswatch -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <!-- pdf-lib -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+
+  <!-- JS principal -->
+  <script src="../javascript.js" defer></script>
+
+  <!-- CSS próprio -->
+  <link rel="stylesheet" href="../css/exemplo_case.css">
+</head>
+
+<body>
+
+<!-- ================= TOPO ================= -->
+<nav class="top-nav">
+  <div class="nav-container" style="max-width:1700px; width:96%;">
+    <div class="nav-logo">
+      <img src="../imagem/logo_microcredenciais.png" height="80" alt="Microcredenciais Paraná">
+    </div>
+  </div>
+</nav>
+
+<!-- ================= CONTEÚDO ================= -->
+<main
+  style="width:min(96vw,1700px); margin:32px auto 40px; padding:24px 16px; box-sizing:border-box;">
+
+  <!-- TÍTULO -->
+  <section class="hero-content">
+    <h1 class="title">
+      Exemplos e Cases
+      <span class="subtitle">Estudo de Caso 01</span>
+    </h1>
+
+    <div class="message-box">
+      <p>
+        Utilize os campos a seguir para enviar o conteúdo da etapa.
+        Considere utilizar os recursos sugeridos anteriormente.
+      </p>
+      <p>
+        Observe o modelo de estudo de caso utilizando uma reportagem.
+      </p>
+    </div>
+  </section>
+
+  <!-- LEMBRETE -->
+  <div class="mb-4">
+    <strong>
+      <p>
+        ORIENTAÇÃO: Os arquivos que farão parte do conteúdo deverão ser anexados
+        em espaço próprio ao final desse material, conforme indicado no texto.
+      </p>
+    </strong>
+  </div>
+
+  <!-- ================= CAMPOS + IMAGEM ================= -->
+  <div class="row g-4 align-items-start">
+
+    <!-- ===== COLUNA ESQUERDA – CAMPOS ===== -->
+    <div class="col-12 col-lg-8">
+
+      <!-- TEXTO -->
+      <label for="estudoCaso2" class="form-label fw-semibold">
+        Insira aqui o texto referente ao ESTUDO DE CASO 01
+      </label>
+
+      <textarea
+        id="estudoCaso2"
+        class="texto form-control form-control-lg mb-4"
+        rows="5"
+        placeholder="Insira aqui o texto referente ao ESTUDO DE CASO 01">
+      </textarea>
+
+      <!-- YOUTUBE -->
+      <label for="youtubeAula2" class="form-label fw-semibold">
+        Caso opte por gravar um vídeo, cole aqui o link.
+      </label>
+
+      <input
+        type="url"
+        id="youtubeAula2"
+        class="form-control mb-3"
+        placeholder="https://www.youtube.com/watch?v=..."
+        autocomplete="off">
+
+    </div>
+
+    <!-- ===== COLUNA DIREITA – IMAGEM ===== -->
+    <div class="col-12 col-lg-4">
+
+      <div class="card shadow-sm sticky-top" style="top:16px;">
+        <div class="card-body text-center">
+
+          <h6 class="fw-semibold mb-3">
+            Exemplo de Estudo de Caso
+          </h6>
+
+          <img
+            src="../imagem/slide25.png"
+            alt="Exemplo de estudo de caso"
+            class="img-fluid rounded border"
+            style="cursor:zoom-in;"
+            data-bs-toggle="modal"
+            data-bs-target="#modalImagemExemplo">
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- ================= FIM CAMPOS + IMAGEM ================= -->
+
+  <!-- ================= NAVEGAÇÃO ================= -->
+  <div class="menu-grid mt-5">
+
+    <a href="./exemplo_case_1.html" class="menu-item blue">
+      <div class="icon-container">
+        <div class="icon-inner">
+          <img src="../imagem/esquerda.png" style="width:50%">
+        </div>
+      </div>
+      <div class="label">Anterior</div>
+    </a>
+
+    <a href="../exemplo_case/exemplo_case_0.html" class="menu-item blue">
+      <div class="icon-container">
+        <div class="icon-inner">
+          <img src="../imagem/home.png" style="width:50%">
+        </div>
+      </div>
+      <div class="label">Home</div>
+    </a>
+
+    <a href="./exemplo_case_3.html" class="menu-item blue">
+      <div class="icon-container">
+        <div class="icon-inner">
+          <img src="../imagem/direita.png" style="width:50%">
+        </div>
+      </div>
+      <div class="label">Próximo</div>
+    </a>
+
+  </div>
+
+</main>
+
+<!-- ================= MODAL ================= -->
+<div class="modal fade" id="modalImagemExemplo" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Exemplo de Visualização</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Fechar">
+        </button>
+      </div>
+
+      <div class="modal-body text-center">
+        <img
+          src="../imagem/slide25.png"
+          alt="Exemplo ampliado"
+          class="img-fluid rounded shadow"
+          style="max-height:80vh;">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= RODAPÉ ================= -->
+<footer class="bottom-nav">
+  <div class="footer-container" style="max-width:1700px; width:96%; margin-top:10px;">
+    <p>&copy; 2026 UVPR - Universidade Virtual do Paraná</p>
+  </div>
+</footer>
+
+</body>
+</html>

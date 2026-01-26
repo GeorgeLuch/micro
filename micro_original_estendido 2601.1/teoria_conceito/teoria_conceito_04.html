@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microcredenciais Paraná</title>
+
+  <!-- Bootswatch / Bootstrap -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <!-- pdf-lib -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+
+  <!-- JS principal -->
+  <script src="../javascript.js" defer></script>
+
+  <!-- CSS próprio -->
+  <link rel="stylesheet" href="../css/teoria_conceito.css">
+</head>
+
+<body>
+
+<!-- ================= TOPO ================= -->
+<nav class="top-nav">
+  <div class="nav-container" style="max-width:1700px; width:96%;">
+    <div class="nav-logo">
+      <img src="../imagem/logo_microcredenciais.png" height="80" alt="Microcredenciais Paraná">
+    </div>
+  </div>
+</nav>
+
+<!-- ================= CONTEÚDO ================= -->
+<main
+  style="width:min(96vw,1700px); margin:32px auto 40px; padding:24px 16px; box-sizing:border-box;">
+
+  <!-- TÍTULO -->
+  <section class="hero-content">
+    <h1 class="title">
+      Teorias e Conceitos
+      <span class="subtitle">Unidade 01</span>
+    </h1>
+
+    <div class="message-box">
+      <p>
+        Utilize os campos a seguir para enviar o conteúdo da Unidade.
+        Lembre-se de optar por um texto objetivo e alinhado aos tópicos do curso.
+      </p>
+      <p>
+        No decorrer do texto, indique onde devem ser inseridos os elementos visuais.
+      </p>
+      <p>
+        <strong>
+          ORIENTAÇÃO: As imagens que farão parte do conteúdo deverão ser anexadas ao final,
+          conforme indicação no texto.
+        </strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= CAMPOS + IMAGEM ================= -->
+  <div class="row g-4 align-items-start mt-3">
+
+    <!-- ===== COLUNA ESQUERDA – CAMPOS ===== -->
+    <div class="col-12 col-lg-8">
+
+      <!-- TEXTO -->
+      <label for="textounidade1" class="form-label fw-semibold">
+        Texto da Unidade 01
+      </label>
+
+      <textarea
+        id="textounidade1"
+        class="texto form-control form-control-lg mb-4"
+        rows="5"
+        placeholder="Insira aqui o texto referente à UNIDADE 01.">
+      </textarea>
+
+      <!-- YOUTUBE -->
+      <label class="form-label fw-semibold" for="youtubedaunidade">
+        Caso opte por gravar um vídeo, cole aqui o link da unidade 01.
+      </label>
+
+      <input
+        type="url"
+        id="youtubedaunidade"
+        class="form-control mb-3"
+        placeholder="https://www.youtube.com/watch?v=..."
+        autocomplete="off">
+
+    </div>
+
+    <!-- ===== COLUNA DIREITA – IMAGEM ===== -->
+    <div class="col-12 col-lg-4">
+
+      <div class="card shadow-sm sticky-top" style="top:16px;">
+        <div class="card-body text-center">
+
+          <h6 class="fw-semibold mb-3">
+            Exemplo de apresentação
+          </h6>
+
+          <img
+            src="../imagem/slide17.png"
+            alt="Exemplo de apresentação do professor"
+            class="img-fluid rounded border"
+            style="cursor:zoom-in;"
+            data-bs-toggle="modal"
+            data-bs-target="#modalImagemExemplo">
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- ================= FIM CAMPOS + IMAGEM ================= -->
+
+  <!-- ================= NAVEGAÇÃO ================= -->
+  <div class="menu-grid mt-5">
+
+    <a href="../teoria_conceito/teoria_conceito_02.html" class="menu-item blue">
+      <div class="icon-container">
+        <div class="icon-inner">
+          <img src="../imagem/esquerda.png" style="width:50%">
+        </div>
+      </div>
+      <div class="label">Anterior</div>
+    </a>
+
+    <a href="../teoria_conceito/teoria_conceito_0.html" class="menu-item blue">
+      <div class="icon-container">
+        <div class="icon-inner">
+          <img src="../imagem/home.png" style="width:50%">
+        </div>
+      </div>
+      <div class="label">Home</div>
+    </a>
+
+    <a href="../teoria_conceito/teoria_conceito_05.html" class="menu-item blue">
+      <div class="icon-container">
+        <div class="icon-inner">
+          <img src="../imagem/direita.png" style="width:50%">
+        </div>
+      </div>
+      <div class="label">Próximo</div>
+    </a>
+
+  </div>
+
+</main>
+
+<!-- ================= MODAL ================= -->
+<div class="modal fade" id="modalImagemExemplo" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Exemplo de Visualização</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Fechar">
+        </button>
+      </div>
+
+      <div class="modal-body text-center">
+        <img
+          src="../imagem/slide17.png"
+          alt="Exemplo ampliado"
+          class="img-fluid rounded shadow"
+          style="max-height:80vh;">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= RODAPÉ ================= -->
+<footer class="bottom-nav">
+  <div class="footer-container" style="max-width:1700px; width:96%;">
+    <p>&copy; 2026 UVPR - Universidade Virtual do Paraná</p>
+  </div>
+</footer>
+
+</body>
+</html>

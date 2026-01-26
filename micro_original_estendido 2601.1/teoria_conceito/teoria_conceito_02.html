@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microcredenciais Paraná</title>
+
+    <!-- Bootswatch (Bootstrap) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
+
+    <!-- CSS próprio -->
+    <link rel="stylesheet" href="../css/teoria_conceito.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <!-- pdf-lib (usado no final do fluxo) -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+
+    <!-- JS principal -->
+    <script src="../javascript.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="top-nav">
+        <div class="nav-container" style="max-width: 1700px; width: 96%;">
+            <div class="nav-logo">
+                <img src="../imagem/logo_microcredenciais.png" alt="Microcredenciais Paraná" height="80">
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <!-- <main class="container"> -->
+    <main
+        style="width: min(96vw, 1700px); margin: 32px auto 40px; padding: 24px 16px; flex: 1; background: transparent; box-shadow: none; border-radius: 0; box-sizing: border-box;">
+
+        <section class="hero-content">
+            <h1 class="title">
+                Teorias e conceitos
+                <span class="subtitle"></span>
+            </h1>
+            <h1 class="title">
+
+                <span class="subtitle">Recurso pedagógico digital:</span>
+            </h1>
+
+
+            <div class="message-box">
+                <p>
+                    Busque enriquecer o percurso formativo por meio da inserção de diferentes recursos educacionais,
+                    como imagens, vídeos, documentos, artigos científicos, reportagens, infográficos, mapas mentais,
+                    quizzes, jogos e outros recursos interativos. Esses elementos ampliam a compreensão dos temas
+                    abordados e tornam a experiência de aprendizagem mais dinâmica, envolvente e significativa.
+                </p>
+                <p>
+                    Essa abordagem multimodal favorece o engajamento, atende a diferentes estilos de aprendizagem e
+                    fortalece a construção do conhecimento de forma dinâmica, prática e conectada às demandas reais da
+                    formação por competências.
+                </p>
+                <p>
+                   <strong>Os recursos pedagógicos digitais</strong>  auxiliam na aproximação do conteúdo com a realidade prática,
+                    despertam o interesse dos participantes e contribuem para uma compreensão mais clara da relevância
+                    do desafio dentro da metodologia da microcredencial.  Confira alguns exemplos:
+                </p>
+
+
+            
+            </div>
+<!-- Ícones de recursos pedagógicos (clique para ver exemplos) -->
+            <div class="resources-section">
+                <div class="resources-grid resources-grid-top">
+
+                    <button type="button" class="resource-card" data-title="1 - Vídeo curto"
+                        data-image="../imagem/videocurto.png">
+                        <div class="resource-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64">
+                                <rect x="10" y="16" width="44" height="30" rx="4"></rect>
+                                <polygon points="30,24 30,38 42,31"></polygon>
+                                <line x1="22" y1="50" x2="42" y2="50"></line>
+                                <line x1="28" y1="50" x2="26" y2="56"></line>
+                                <line x1="36" y1="50" x2="38" y2="56"></line>
+                            </svg>
+                        </div>
+                        <div class="resource-label">Vídeo curto</div>
+                    </button>
+
+                    <button type="button" class="resource-card" data-title="2 - Reportagem"
+                        data-image="../imagem/reportagem.png">
+                        <div class="resource-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64">
+                                <rect x="12" y="14" width="40" height="36" rx="4"></rect>
+                                <line x1="20" y1="24" x2="44" y2="24"></line>
+                                <line x1="20" y1="30" x2="44" y2="30"></line>
+                                <line x1="20" y1="36" x2="36" y2="36"></line>
+                                <rect x="20" y="40" width="10" height="6" rx="2"></rect>
+                                <line x1="34" y1="42" x2="44" y2="42"></line>
+                                <line x1="34" y1="46" x2="44" y2="46"></line>
+                            </svg>
+                        </div>
+                        <div class="resource-label">Reportagem</div>
+                    </button>
+
+                    <button type="button" class="resource-card" data-title="3 - Podcast"
+                        data-image="../imagem/podcast.png">
+                        <div class="resource-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64">
+                                <path d="M18 34v-6a14 14 0 0 1 28 0v6"></path>
+                                <rect x="14" y="32" width="8" height="16" rx="4"></rect>
+                                <rect x="42" y="32" width="8" height="16" rx="4"></rect>
+                                <path d="M24 48a8 8 0 0 0 16 0"></path>
+                                <line x1="32" y1="30" x2="32" y2="44"></line>
+                                <circle cx="32" cy="46" r="2"></circle>
+                            </svg>
+                        </div>
+                        <div class="resource-label">Podcast</div>
+                    </button>
+
+                    <button type="button" class="resource-card" data-title="4 - Enquete"
+                        data-image="../imagem/enquete.png">
+                        <div class="resource-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64">
+                                <path
+                                    d="M26 18h10a4 4 0 0 1 4 4v6h6a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-6v6a4 4 0 0 1-4 4H30a4 4 0 0 1-4-4v-6h-6a4 4 0 0 1-4-4V30a4 4 0 0 1 4-4h6v-4a4 4 0 0 1 4-4z"></path>
+                                <line x1="24" y1="34" x2="40" y2="34"></line>
+                                <line x1="24" y1="40" x2="34" y2="40"></line>
+                            </svg>
+                        </div>
+                        <div class="resource-label">Enquete</div>
+                    </button>
+
+                </div>
+
+                <div class="resources-grid resources-grid-bottom">
+
+                    <button type="button" class="resource-card" data-title="5 - Infográfico"
+                        data-image="../imagem//infografico.png">
+                        <div class="resource-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64">
+                                <rect x="12" y="16" width="40" height="32" rx="4"></rect>
+                                <circle cx="24" cy="28" r="3"></circle>
+                                <path d="M18 44l10-10 6 6 6-8 8 12"></path>
+                            </svg>
+                        </div>
+                        <div class="resource-label">Infográficos</div>
+                    </button>
+
+                    <button
+  type="button"
+  class="resource-card resource-forum"
+  data-bs-toggle="tooltip"
+  data-bs-placement="top"
+  title="Fórum disparador, com perguntas orientadoras relacionadas ao desafio proposto.">
+
+  <div class="resource-icon" aria-hidden="true">
+    <svg viewBox="0 0 64 64">
+      <path d="M16 22h26a6 6 0 0 1 6 6v10a6 6 0 0 1-6 6H28l-10 8v-8h-2a6 6 0 0 1-6-6V28a6 6 0 0 1 6-6z"></path>
+      <path d="M34 18h14a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6h-4"></path>
+      <circle cx="22" cy="32" r="1.8"></circle>
+      <circle cx="28" cy="32" r="1.8"></circle>
+      <circle cx="34" cy="32" r="1.8"></circle>
+    </svg>
+  </div>
+
+  <div class="resource-label">Fórum</div>
+</button>
+
+
+                    <button type="button" class="resource-card" data-title="7 - Outros recursos"
+                        data-image="../imagem/outrosrecursos.png">
+                        <div class="resource-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64">
+                                <path d="M26 52l-4-16a6 6 0 0 1 6-8h4V18a4 4 0 0 1 8 0v10h4a6 6 0 0 1 6 6v6a12 12 0 0 1-12 12H26z"></path>
+                                <circle cx="40" cy="20" r="3"></circle>
+                                <line x1="36" y1="24" x2="44" y2="24"></line>
+                            </svg>
+                        </div>
+                        <div class="resource-label">Outros recursos</div>
+                    </button>
+
+                </div>
+
+                <p class="resources-tip">
+                    <strong>Dica:</strong> em cada unidade de estudos, escolha ao menos um dos recursos sugeridos para
+                    complementar o conteúdo, priorizando sempre a diversidade de formatos.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- MENU -->
+        <div class="menu-grid">
+
+            <a href="teoria_conceito_01.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/esquerda.png" alt="Anterior" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Anterior</div>
+            </a>
+
+            <a href="../teoria_conceito/teoria_conceito_0.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/home.png" alt="Home" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Home</div>
+            </a>
+
+            <a href="./teoria_conceito_04.html" class="menu-item blue">
+                <div class="icon-container">
+                    <div class="icon-inner">
+                        <img src="../imagem/direita.png" alt="Próximo" style="width:50%;">
+                    </div>
+                </div>
+                <div class="label">Próximo</div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Modal para exibir as imagens dos exemplos -->
+    <div class="modal fade" id="resourceModal" tabindex="-1" aria-labelledby="resourceModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 16px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resourceModalTitle">Recurso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="resourceModalImg" src="" alt="" class="img-fluid w-100" style="border-radius: 12px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const modalEl = document.getElementById('resourceModal');
+    const modalTitle = document.getElementById('resourceModalTitle');
+    const modalImg = document.getElementById('resourceModalImg');
+
+    // Clique nos cards
+    document.querySelectorAll('.resource-card').forEach((card) => {
+        card.addEventListener('click', () => {
+
+            // 👉 FÓRUM: não abre modal, apenas tooltip
+            if (card.classList.contains('resource-forum')) {
+                return;
+            }
+
+            const img = (card.dataset.image || '').trim();
+            const title =
+                (card.dataset.title ||
+                 card.querySelector('.resource-label')?.textContent ||
+                 'Recurso').trim();
+
+            if (!img) return;
+
+            modalTitle.textContent = title;
+            modalImg.src = img;
+            modalImg.alt = title;
+
+            const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+            bsModal.show();
+        });
+    });
+
+    // Limpa imagem ao fechar modal
+    modalEl.addEventListener('hidden.bs.modal', () => {
+        modalImg.src = '';
+        modalImg.alt = '';
+    });
+
+    // Inicializa tooltips (Fórum)
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        .forEach(el => new bootstrap.Tooltip(el));
+});
+</script>
+
+
+
+    <!-- </main> -->
+
+    <!-- FOOTER -->
+    <footer class="bottom-nav">
+        <div class="footer-container" style="max-width: 1700px; width: 96%;">
+            <p class="copyright">
+                &copy; 2026 UVPR - Universidade Virtual do Paraná
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
